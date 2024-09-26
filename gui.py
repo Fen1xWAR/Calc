@@ -58,7 +58,7 @@ def create_buttons(root):
     right_paren_button.grid(row=1, column=2, sticky="nsew", padx=2, pady=2)
 
     # Делим
-    divide_button = ttk.Button(buttons_frame, text="/", width=5,style="Accent.TButton", command=lambda: add_char('/'))
+    divide_button = ttk.Button(buttons_frame, text="÷", width=5,style="Accent.TButton", command=lambda: add_char('/'))
     divide_button.grid(row=1, column=3, sticky="nsew", padx=2, pady=2)
 
     # Долой последний символ
@@ -108,7 +108,7 @@ def add_char(char):
     text_field.config(state=tk.NORMAL)
     if text_field.get() == '0':
         text_field.delete(0, tk.END)
-    if evaluating_buffer and evaluating_buffer[-1] in "+-*/^(" and char in "+-*/^(":
+    if evaluating_buffer and evaluating_buffer[-1] in "+-*/^" and char in "+-*/^":
 
         evaluating_buffer = evaluating_buffer[:-1] + char
         text_field.delete(len(text_field.get()) - 1, tk.END)
@@ -151,7 +151,7 @@ def calculate():
         evaluating_buffer+=")"*count_bracket
     data_to_calculate = evaluating_buffer.replace("^", "**")
     data_to_calculate = data_to_calculate.replace("exp()", "exp(1)")
-    data_to_calculate = data_to_calculate.replace("exp", "exp(1)")
+
     expression_field.config(text=f"{data_to_calculate} =")
     result = Calculator.calculate_expression(data_to_calculate)
 
