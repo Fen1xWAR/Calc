@@ -11,6 +11,7 @@ class Calculator(object):
         ast.Mult: operator.mul,
         ast.Div: operator.truediv,
         ast.USub: operator.neg,
+        ast.Pow: operator.pow,
     }
     # Список функций
     __math_functions = {
@@ -18,6 +19,7 @@ class Calculator(object):
         'sqrt': math.sqrt,
         'π': math.pi,
         'fact' : math.factorial,
+
 
     }
 

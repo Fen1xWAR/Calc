@@ -20,12 +20,12 @@ namespace eval ttk::theme::azure-light {
         load_images [file join [file dirname [info script]] light]
         
         array set colors {
-            -fg             "#000000"
+            -fg             "#F2D5D5"
             -bg             "#ffffff"
             -disabledfg     "#737373"
             -disabledbg     "#ffffff"
             -selectfg       "#ffffff"
-            -selectbg       "#007fff"
+            -selectbg       "#F2D3AC"
         }
 
         ttk::style layout TButton {
