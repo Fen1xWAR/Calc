@@ -11,7 +11,7 @@ def setup_ui(root):
     root.tk.call("source", "azure.tcl")
     root.tk.call("set_theme", "light")
     root.title("Калькулятор")
-    root.geometry("340x420")
+    root.geometry("340x460")
     root.resizable(False, False)
 
     # Создание текстового поля и лабеля
@@ -35,61 +35,84 @@ def create_buttons(root):
     buttons_frame = tk.Frame(root)
     buttons_frame.grid(row=2, column=0, columnspan=4, )
 
+    # sin
+    sin_button = ttk.Button(buttons_frame, text="sin", width=5, style="Accent.TButton",
+                             command=lambda text="sin(": add_char(text))
+    sin_button.grid(row=0, column=0, padx=2,pady=2, sticky="nsew")
+    # cos
+    cos_button = ttk.Button(buttons_frame, text='cos', width=5, style="Accent.TButton",
+                           command=lambda text="cos(": add_char(text))
+    cos_button.grid(row=0, column=1, padx=2,pady=2, sticky="nsew")
+    # tan
+    tan_button = ttk.Button(buttons_frame, text='tan', width=5, style="Accent.TButton",
+                            command=lambda text="tan(": add_char(text))
+    tan_button.grid(row=0, column=2, padx=2,pady=2, sticky="nsew")
+    # пиии
+
+    pi_button = ttk.Button(buttons_frame, text='π', width=5, style="Accent.TButton",
+                           command=lambda text="π": add_char(text))
+    pi_button.grid(row=0, column=3, padx=2,pady=2, sticky="nsew")
+
+
     # Корень
-    sqrt_button = ttk.Button(buttons_frame, text="√", width=5,style="Accent.TButton", command=lambda text="sqrt(": add_char(text))
-    sqrt_button.grid(row=0, column=0, padx=2, sticky="nsew")
-    # ПиПИПИ
-    pi_button = ttk.Button(buttons_frame, text='π', width=5,style="Accent.TButton", command=lambda text="π": add_char(text))
-    pi_button.grid(row=0, column=1, padx=2, sticky="nsew")
+    sqrt_button = ttk.Button(buttons_frame, text="√n", width=5,style="Accent.TButton", command=lambda text="sqrt(": add_char(text))
+    sqrt_button.grid(row=1, column=0, padx=2, sticky="nsew")
+    # плов
+    pow_button = ttk.Button(buttons_frame, text="n^", width=5, style="Accent.TButton",
+                            command=lambda text="^": add_char(text))
+    pow_button.grid(row=1, column=1, padx=2, sticky="nsew")
+
+    # FAC
+    fac_button = ttk.Button(buttons_frame, text="n!", width=5, style="Accent.TButton",
+                            command=lambda text="fact": add_char(text))
+    fac_button.grid(row=1, column=2, padx=2, sticky="nsew")
+
     # EXP
     exp_button = ttk.Button(buttons_frame, text='e', width=5,style="Accent.TButton", command=lambda text="exp(": add_char(text))
-    exp_button.grid(row=0, column=2, padx=2, sticky="nsew")
-    # FAC
-    pow_button = ttk.Button(buttons_frame, text="^", width=5,style="Accent.TButton", command=lambda text="^": add_char(text))
-    pow_button.grid(row=0, column=3, padx=2, sticky="nsew")
+    exp_button.grid(row=1, column=3, padx=2, sticky="nsew")
 
     # Долой все
     clear_all_button = ttk.Button(buttons_frame, text="AC",style="Accent.TButton", width=5, command=lambda: clear())
-    clear_all_button.grid(row=1, column=0, pady=2, padx=2, sticky="nsew")
+    clear_all_button.grid(row=2, column=0, pady=2, padx=2, sticky="nsew")
     # Скобки
     left_paren_button = ttk.Button(buttons_frame, text="(", width=5,style="Accent.TButton", command=lambda: add_char('('))
-    left_paren_button.grid(row=1, column=1, sticky="nsew", padx=2, pady=2)
+    left_paren_button.grid(row=2, column=1, sticky="nsew", padx=2, pady=2)
     right_paren_button = ttk.Button(buttons_frame, text=")", width=5,style="Accent.TButton", command=lambda:  add_char(')' if evaluating_buffer.count("(")>0 else ''))
-    right_paren_button.grid(row=1, column=2, sticky="nsew", padx=2, pady=2)
+    right_paren_button.grid(row=2, column=2, sticky="nsew", padx=2, pady=2)
 
     # Делим
     divide_button = ttk.Button(buttons_frame, text="÷", width=5,style="Accent.TButton", command=lambda: add_char('/'))
-    divide_button.grid(row=1, column=3, sticky="nsew", padx=2, pady=2)
+    divide_button.grid(row=2, column=3, sticky="nsew", padx=2, pady=2)
 
     # Долой последний символ
     clear_button = ttk.Button(buttons_frame, text="⌫", width=5,style="Accent.TButton", command=lambda: clear_last_char())
-    clear_button.grid(row=5, column=2, sticky="nsew", padx=2, pady=2)
+    clear_button.grid(row=6, column=2, sticky="nsew", padx=2, pady=2)
 
     # РАВНОРАВНО
     button_evaluate = ttk.Button(buttons_frame, text="=", width=5,style="Accent.TButton", command=lambda: calculate())
-    button_evaluate.grid(row=5, column=3, sticky="nsew", padx=2, pady=2)
+    button_evaluate.grid(row=6, column=3, sticky="nsew", padx=2, pady=2)
 
     # пласплас
     plus_button = ttk.Button(buttons_frame, text="+", width=5, style="Accent.TButton", command=lambda: add_char('+'))
-    plus_button.grid(row=4, column=3, sticky="nsew", padx=2, pady=2)
+    plus_button.grid(row=5, column=3, sticky="nsew", padx=2, pady=2)
      # минус
     minus_button = ttk.Button(buttons_frame, text="-", width=5, style="Accent.TButton", command=lambda: add_char('-'))
-    minus_button.grid(row=3, column=3, sticky="nsew", padx=2, pady=2)
+    minus_button.grid(row=4, column=3, sticky="nsew", padx=2, pady=2)
 
     mult_button = ttk.Button(buttons_frame, text="*", width=5, style="Accent.TButton", command=lambda: add_char('*'))
-    mult_button.grid(row=2, column=3, sticky="nsew", padx=2, pady=2)
+    mult_button.grid(row=3, column=3, sticky="nsew", padx=2, pady=2)
 
     dot_button = ttk.Button(buttons_frame, text=".", width=5, style="Accent.TButton", command=lambda: add_char('.'))
-    dot_button.grid(row=5, column=0, sticky="nsew", padx=2, pady=2)
+    dot_button.grid(row=6, column=0, sticky="nsew", padx=2, pady=2)
 
 
 
     # Цифры
     buttons = [
-        ('7', 2, 0), ('8', 2, 1), ('9', 2, 2),
-        ('4', 3, 0), ('5', 3, 1), ('6', 3, 2),
-        ('1', 4, 0), ('2', 4, 1), ('3', 4, 2),
-         ('0', 5, 1)
+        ('7', 3, 0), ('8', 3, 1), ('9', 3, 2),
+        ('4', 4, 0), ('5', 4, 1), ('6', 4, 2),
+        ('1', 5, 0), ('2', 5, 1), ('3', 5, 2),
+         ('0', 6, 1)
     ]
 
     for (text, row, col) in buttons:

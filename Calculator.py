@@ -1,6 +1,7 @@
 import ast
 import math
 import operator
+from math import factorial
 
 
 class Calculator(object):
@@ -18,6 +19,10 @@ class Calculator(object):
         'exp': math.exp,
         'sqrt': math.sqrt,
         'π': math.pi,
+        'sin': math.sin,
+        'cos': math.cos,
+        'tan': math.tan,
+        'fact': math.factorial,
 
     }
 
