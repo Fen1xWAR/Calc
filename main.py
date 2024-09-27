@@ -11,7 +11,7 @@ def setup_ui(root):
     root.tk.call("source", "azure.tcl")
     root.tk.call("set_theme", "light")
     root.title("Калькулятор")
-    root.geometry("340x460")
+    root.geometry("340x460+450+150")
     root.resizable(False, False)
 
     # Создание текстового поля и лабеля
