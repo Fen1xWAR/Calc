@@ -35,7 +35,7 @@ class Calculator(object):
                 left = Calculator.__evaluate(node.left)
                 right = Calculator.__evaluate(node.right)
                 if type(node.op) in Calculator.__operations:
-                    return Calculator.__operations[type(node.op)](left, right)
+                    return round( Calculator.__operations[type(node.op)](left, right),8)
                 else:
                     raise TypeError(f"Нет такой операции {type(node.op).__name__}")
             case ast.UnaryOp:  # Проверка на унарную операцию
@@ -53,7 +53,8 @@ class Calculator(object):
                 function = Calculator.__evaluate(node.func)
                 node_arg = [Calculator.__evaluate(arg) for arg in node.args]
                 if callable(function):
-                    return function(*node_arg)
+                    print(function(*node_arg))
+                    return round(function(*node_arg),4)
                 else:
                     raise TypeError(f"Ошибка вызова функции {type(function).__name__}")
             case _:
